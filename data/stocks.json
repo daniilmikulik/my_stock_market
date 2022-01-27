@@ -1,0 +1,42 @@
+[
+  {
+    "id": 0,
+    "title": "Газпром",
+    "distribution": "uniform",
+    "max_price": "1000",
+    "amount": 10000,
+    "start_price": 100
+  },
+  {
+    "id": 1,
+    "title": "Apple",
+    "distribution": "normal",
+    "max_price": "1000",
+    "amount": 100000,
+    "start_price": 200
+  },
+  {
+    "id": 2,
+    "title": "Норникель",
+    "distribution": "exp",
+    "max_price": "580",
+    "amount": 2300,
+    "start_price": 50
+  },
+  {
+    "id": 3,
+    "title": "Google",
+    "distribution": "normal",
+    "max_price": "3000",
+    "amount": 34000,
+    "start_price": 760
+  },
+  {
+    "id": 4,
+    "title": "Intel",
+    "distribution": "uniform",
+    "max_price": "800",
+    "amount": 5800,
+    "start_price": 150
+  }
+]

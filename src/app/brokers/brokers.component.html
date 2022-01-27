@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="jumbotron mt-2">
+        <h1 class="display-4">Биржа</h1>
+        <p class="lead"> Здесь отображены участники торгов</p>
+    </div>
+</div>
+
+<div class="container-fluid row">
+    <div class="col-lg-6">
+        <button class="btn btn-outline-success me-2" type="submit" data-bs-toggle="modal" data-bs-target="#addModal" (click)="setCurrent('')"> Добавить участника</button>
+    </div>
+</div>
+
+<div class="row container-fluid">
+    <div class="col-sm-12 col-md-5 col-lg-3 mt-3" *ngFor="let broker of brokers">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Имя участника: {{broker.name}}</h5>
+                <h5 class="card-subtitle mb-2 "> Бюджет {{broker.budget}}$</h5>
+                <button class="btn btn-outline-danger me-2" type="submit" (click)="delete(broker.name)"> Удалить участника</button>
+                <button class="btn btn-outline-dark mt-2" type="submit" data-bs-toggle="modal" data-bs-target="#addModal" (click)="setCurrent(broker.name)"> Редактировать участника </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Изменение настроек</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <h4> Имя участника: </h4>
+                    <input [(ngModel)]="addForm.name" id="#name_input" type="text" name="name">
+                    <h4> Бюджет: </h4>
+                    <input [(ngModel)]="addForm.budget" id="#budget_input" type="number" name="budget">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="sendForm()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

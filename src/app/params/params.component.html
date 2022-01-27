@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="jumbotron mt-2">
+        <h1 class="display-4">Биржа</h1>
+        <p class="lead"> Здесь отображены текущие настройки биржи</p>
+    </div>
+</div>
+
+<div class="container-fluid row">
+    <div class="col-lg-6">
+        <button class="btn btn-outline-success me-2" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"> Изменить настройки </button>
+    </div>
+</div>
+
+<div class="row container-fluid">
+    <div class="col-sm-12 col-md-5 col-lg-3 mt-3">
+        <h3>Время начала торгов: {{params.start_time}}</h3>
+        <h3>Время окончания торгов: {{params.end_time}}</h3>
+        <h4> Интервал: {{params.interval}}</h4>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Изменение настроек</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <h4> Время начала торгов: </h4>
+                    <input [(ngModel)]="editForm.start_time" id="#start_time_input" type="text" name="start_time">
+                    <h4> Время окончания торгов: </h4>
+                    <input [(ngModel)]="editForm.end_time" id="#end_time_input" type="text" name="end_time">
+                    <h4> Интервал: </h4>
+                    <input [(ngModel)]="editForm.interval" id="#interval_input" type="text" name="interval">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="sendForm()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+

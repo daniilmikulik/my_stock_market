@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="jumbotron mt-2">
+        <h1 class="display-4">Биржа</h1>
+        <p class="lead"> Здесь отображены все акции, торгующиеся на бирже</p>
+    </div>
+</div>
+
+<div class="container-fluid row">
+    <div class="col-lg-6">
+        <button class="btn btn-outline-success me-2" type="submit" data-bs-toggle="modal" data-bs-target="#addModal" (click)="setCurrent(-1)"> Добавить акцию</button>
+    </div>
+</div>
+
+<div class="row container-fluid">
+    <div class="col-sm-12 col-md-5 col-lg-3 mt-3" *ngFor="let stock of stocks">
+        <div class="card" id="{{stock.id}}">
+            <div class="card-body">
+                <h5 class="card-title">{{stock.title}}</h5>
+                <h5 class="card-subtitle mb-2 "> Начальная цена: {{stock.start_price}} </h5>
+                <h5 class="card-subtitle mb-2 "> Максимальная цена: {{stock.max_price}} </h5>
+                <h6 class="card-subtitle mb-2 text-muted"> Количество: {{stock.amount}} </h6>
+                <h6 class="card-subtitle mb-2 text-muted"> Закон распределения: {{stock.distribution}} </h6>
+                <button class="btn btn-outline-danger me-2" type="submit" (click)="delete(stock.id)" > Удалить набор акций</button>
+                <button class="btn btn-outline-dark mt-2" type="submit" (click)="setCurrent(stock.id)" data-bs-toggle="modal" data-bs-target="#addModal"> Редактировать набор акций</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Изменение акций</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <h4> Название компании: </h4>
+                    <input [(ngModel)]="addForm.title" id="#title_input" type="text" name="title">
+                    <h4> Закон распределения: </h4>
+                    <input [(ngModel)]="addForm.distribution" id="#distribution_input" type="text" name="distribution">
+                    <h4> Максимальная цена: </h4>
+                    <input [(ngModel)]="addForm.max_price" id="#max_price_input" type="number" name="max_price">
+                    <h4> Начальная цена: </h4>
+                    <input [(ngModel)]="addForm.start_price" id="#start_price_input" type="number" name="start_price">
+                    <h4> Количество: </h4>
+                    <input [(ngModel)]="addForm.amount" id="#amount_input" type="number" name="amount">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="sendForm()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
